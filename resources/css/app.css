@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@source "../../vendor/mckenziearts/laravel-notify/resources/views/**/*.blade.php";
+
+@theme{
+    --color-gramed-purple: #4B1F6F;
+    --color-gramed-light: #F8F1FF;
+    --color-gramed-accent: #8E44AD;
+}
