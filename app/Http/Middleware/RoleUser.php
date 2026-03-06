@@ -18,7 +18,10 @@ class RoleUser
      */
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        if (!collect($roles)->contains($request->user()->role)) {
+        if (Auth::user() == null) {
+            return redirect()->route('errors.403');
+        }
+        if (!collect($roles)->contains(Auth::user()->role)) {
             return redirect()->route('errors.403');
         }
         return $next($request);

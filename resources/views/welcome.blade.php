@@ -59,6 +59,9 @@
                 <div class="h-6 w-px bg-gray-200"></div>
                 @if (Auth::check())
                 <div class="pl-2 group relative cursor-pointer">
+                    @if (Auth::user()->role == 'admin')
+                    <a href="{{ route('admin.dashboard') }}">Dashboard Admin</a>
+                    @else
                     {{ Auth::user()->name }}
                     <div id="dropdownInformation"
                         class="z-10 hidden group-hover:block absolute bg-white border border-default-medium rounded-base shadow-lg w-72 transition-all right-0">
@@ -164,7 +167,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href=""
                                     class="inline-flex items-center w-full p-2 text-fg-danger hover:bg-neutral-tertiary-medium rounded">
                                     <svg class="w-4 h-4 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                         width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -177,6 +180,7 @@
                             </li>
                         </ul>
                     </div>
+                    @endif
                 </div>
                 @else
                 <a href="{{ route('login.index') }}"

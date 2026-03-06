@@ -52,7 +52,7 @@
         </div>
 
         <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button onclick="history.back()"
+            {{-- <button onclick="history.back()"
                 class="group relative px-8 py-4 bg-purple-600 text-white font-semibold rounded-2xl transition-all hover:bg-purple-700 hover:shadow-[0_20px_40px_-15px_rgba(147,51,234,0.3)] flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg"
                     class="h-5 w-5 transform group-hover:-translate-x-1 transition-transform" fill="none"
@@ -61,7 +61,7 @@
                         d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
                 Kembali ke Halaman Sebelumnya
-            </button>
+            </button> --}}
 
             <a href="{{ route('welcome') }}"
                 class="px-8 py-4 bg-white text-slate-600 font-semibold rounded-2xl border border-slate-200 hover:border-purple-200 hover:text-purple-600 transition-all shadow-sm">
