@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-
+use App\Exports\Admin\UsersExport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Mckenziearts\Notify\Action\NotifyAction;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -71,5 +72,10 @@ class UserController extends Controller
             ->send();
 
         return redirect()->route('admin.user');
+    }
+
+    public function exportCSV()
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
 }

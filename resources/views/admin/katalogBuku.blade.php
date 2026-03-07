@@ -6,10 +6,10 @@
                 <p class="text-sm text-gray-500 mt-1">Kelola lebih dari 2.500 koleksi buku Anda.</p>
             </div>
             <div class="flex gap-2 w-full md:w-auto">
-                <button
+                <a href="{{ route('admin.katalogBuku.exportCSV') }}"
                     class="flex-1 md:flex-none px-4 py-2 border border-gray-200 bg-white text-gray-700 rounded-xl hover:bg-gray-50 font-medium transition flex items-center justify-center">
                     <i class="fas fa-download mr-2 text-xs"></i> Export CSV
-                </button>
+                </a>
                 <a href="{{ route('admin.katalogBuku.tambah.index') }}"
                     class="flex-1 md:flex-none px-6 py-2 bg-purple-600 text-white rounded-xl hover:bg-purple-700 shadow-lg shadow-blue-200 font-medium transition flex items-center justify-center">
                     <i class="fas fa-plus mr-2 text-xs"></i> Tambah Buku

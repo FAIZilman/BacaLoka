@@ -18,7 +18,8 @@ Route::controller(BukuController::class)->group(function () {
     Route::put('/admin/katalog-buku/{slug}', 'update')->name('admin.katalogBuku.ubah.update');
     Route::get('/admin/katalog-buku/{slug}', 'show')->name('admin.katalogBuku.show');
     Route::delete('/admin/katalog-buku/{slug}', 'destroy')->name('admin.katalogBuku.destroy');
-    Route::get('/katalog-buku/pdf/{slug}', 'downloadPdf')->name('admin.katalogBuku.pdf');
+    Route::get('/admin/katalog-buku/pdf/{slug}', 'downloadPdf')->name('admin.katalogBuku.pdf');
+    Route::get('/admin/katalog-buku/export/CSV', 'exportCSV')->name('admin.katalogBuku.exportCSV');
 })->middleware('role:admin');
 
 Route::controller(UserController::class)->group(function () {
@@ -29,6 +30,7 @@ Route::controller(UserController::class)->group(function () {
     Route::put('/admin/user/{id}', 'update')->name('admin.user.ubah.update');
     // Route::get('/admin/user/{id}', 'show')->name('admin.user.show');
     Route::delete('/admin/user/{id}', 'destroy')->name('admin.user.destroy');
+    Route::get('/admin/user/exportCSV', 'exportCSV')->name('admin.user.exportCSV');
     // Route::get('/user/pdf', );
 })->middleware('role:admin');
 

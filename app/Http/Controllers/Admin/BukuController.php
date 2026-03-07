@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\Admin\BooksExport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 use Mckenziearts\Notify\Action\NotifyAction;
 
 class BukuController extends Controller
@@ -164,5 +166,10 @@ class BukuController extends Controller
     {
         $book = DB::table('books')->where('slug', '=', $slug)->select('book_file')->first();
         return response()->download(storage_path('app/public/' . $book->book_file));
+    }
+
+    public function exportCSV()
+    {
+        return Excel::download(new BooksExport, 'books.xlsx');
     }
 }
