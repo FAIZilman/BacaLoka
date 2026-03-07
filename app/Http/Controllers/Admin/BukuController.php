@@ -41,7 +41,7 @@ class BukuController extends Controller
             'author' => 'required',
             'penerbit' => 'required',
             'year_terbit' => 'required',
-            'book_file' => 'required',
+            'book_file' => 'required|mimes:pdf',
         ]);
 
         $path_image = $request->file('image')->store('images', 'public');

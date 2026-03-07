@@ -1,4 +1,11 @@
 <x-admin.template.app title="Admin Panel Anggota | BacaLoka">
+    <x-slot:alert>
+        <div class="bg-red-500 text-xs font-semibold text-white py-2 text-center w-full">
+            Setiap data Pengguna memiliki Role User dan Khusus untuk role super admin akan mengelola seluruh pengguna
+            termasuk
+            admin
+        </div>
+    </x-slot:alert>
     <div class="bg-gray-50 min-h-screen p-6 md:p-8">
 
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
@@ -15,13 +22,13 @@
                     </svg>
                     Export CSV
                 </button>
-                <button
+                {{-- <button
                     class="flex items-center gap-2 px-4 py-2 bg-blue-600 rounded-lg text-sm font-semibold text-white hover:bg-blue-700 transition shadow-md shadow-blue-100">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                     </svg>
                     Tambah Anggota
-                </button>
+                </button> --}}
             </div>
         </div>
 
@@ -114,21 +121,17 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="flex justify-end gap-2">
-                                    <button
+                                    <a href="{{ route('admin.user.ubah.edit', ['id' => $user->id]) }}"
                                         class="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-md transition">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
                                             </path>
                                         </svg>
-                                    </button>
-                                    <button
-                                        class="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-md transition">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728L5.636 5.636"></path>
-                                        </svg>
-                                    </button>
+                                    </a>
+                                    <a href="{{ route('admin.user.destroy', ['id' => $user->id]) }}"
+                                        class=" p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition"
+                                        data-confirm-delete="true"><i class="fas fa-trash text-sm"></i></a>
                                 </div>
                             </td>
                         </tr>

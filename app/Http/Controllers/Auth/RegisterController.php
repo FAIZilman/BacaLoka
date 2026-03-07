@@ -41,7 +41,8 @@ class RegisterController extends Controller
                 'name' => $request->string('name')->trim()->ucwords(),
                 'email' => $request->input('email'),
                 'password' => Hash::make($request->input('email')),
-                'role' => 'user'
+                'role' => 'user',
+                'created_at' => now()
             ]);
 
             Auth::loginUsingId($user);

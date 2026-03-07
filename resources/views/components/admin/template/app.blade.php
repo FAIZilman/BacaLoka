@@ -1,4 +1,4 @@
-@props(['title' => 'Admin Panel'])
+@props(['title' => 'Admin Panel', 'alert' => ''])
 <!DOCTYPE html>
 <html lang="id">
 
@@ -33,10 +33,10 @@
     <div id="overlay" onclick="toggleSidebar()"
         class="fixed inset-0 bg-slate-900/50 z-20 hidden backdrop-blur-sm transition-opacity"></div>
 
-    <div class="flex min-h-screen">
+    <div class="flex h-screen overflow-hidden">
 
         <aside id="sidebar"
-            class="sidebar-transition fixed inset-y-0 left-0 z-30 w-64 bg-white border-r border-slate-200 transform -translate-x-full lg:translate-x-0 lg:relative flex flex-col">
+            class="sidebar-transition fixed h-screen left-0 z-30 w-64 bg-white border-r border-slate-200 transform -translate-x-full lg:translate-x-0 lg:relative flex flex-col overflow-auto">
 
             <div class="p-6 flex items-center justify-between">
                 <div class="flex items-center gap-3 text-purple-700">
@@ -60,7 +60,7 @@
                 </button>
             </div>
 
-            <nav class="flex-1 px-4 space-y-1 mt-4 overflow-y-auto">
+            <nav class="flex-1 px-4 space-y-1 mt-4">
                 <a href="{{ route('admin.dashboard') }}" class="@if ( request()->is('dashboard'))
                     text-purple-700 bg-purple-50 font-semibold
                     @else
@@ -115,35 +115,41 @@
             </div>
         </aside>
 
-        <main class="flex-1 flex flex-col min-w-0">
-            <header
-                class="h-20 bg-white border-b border-slate-200 flex items-center justify-between px-4 lg:px-8 sticky top-0 z-10">
-                <div class="flex items-center gap-4">
-                    <button onclick="toggleSidebar()"
-                        class="p-2 rounded-lg bg-slate-100 text-slate-600 hover:bg-purple-100 hover:text-purple-600 transition-colors">
-                        <svg id="toggleIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                    <h2 class="font-bold text-slate-800 hidden sm:block">Dashboard Admin</h2>
-                </div>
+        <main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+            <header class="w-full">
+                <div
+                    class="h-20 bg-white border-b border-slate-200 flex items-center justify-between px-4 lg:px-8 sticky top-0 z-10">
 
-                <div class="flex items-center gap-4">
-                    <div class="text-right hidden md:block">
-                        <p class="text-sm font-bold text-slate-900 leading-none">Admin Pustaka</p>
-                        <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider mt-1">Super Admin
-                        </p>
+                    <div class="flex items-center gap-4">
+                        <button onclick="toggleSidebar()"
+                            class="p-2 rounded-lg bg-slate-100 text-slate-600 hover:bg-purple-100 hover:text-purple-600 transition-colors">
+                            <svg id="toggleIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                        <h2 class="font-bold text-slate-800 hidden sm:block">Dashboard Admin</h2>
                     </div>
-                    <div
-                        class="w-10 h-10 rounded-xl bg-purple-600 border-4 border-purple-100 flex items-center justify-center text-white font-bold shadow-sm">
-                        A
+
+                    <div class="flex items-center gap-4">
+                        <div class="text-right hidden md:block">
+                            <p class="text-sm font-bold text-slate-900 leading-none">Admin Pustaka</p>
+                            <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider mt-1">Super
+                                Admin
+                            </p>
+                        </div>
+                        <div
+                            class="w-10 h-10 rounded-xl bg-purple-600 border-4 border-purple-100 flex items-center justify-center text-white font-bold shadow-sm">
+                            A
+                        </div>
                     </div>
                 </div>
+                {{ $alert }}
             </header>
-
-            {{ $slot }}
+            <div class="flex-1 overflow-y-auto">
+                {{ $slot }}
+            </div>
         </main>
     </div>
 

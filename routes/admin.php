@@ -23,11 +23,12 @@ Route::controller(BukuController::class)->group(function () {
 
 Route::controller(UserController::class)->group(function () {
     Route::get('/admin/user', 'index')->name('admin.user');
-    Route::get('/admin/user/tambah', 'create')->name('admin.user.tambah.create');
-    Route::post('/admin/user', 'store')->name('admin.user.tambah.store');
-    Route::get('/admin/user/{slug}/edit', 'edit')->name('admin.user.ubah.edit');
-    Route::get('/admin/user/{slug}', 'show')->name('admin.user.show');
-    Route::delete('/admin/user/{slug}', 'destroy')->name('admin.user.destroy');
+    // Route::get('/admin/user/tambah', 'create')->name('admin.user.tambah.create');
+    // Route::post('/admin/user', 'store')->name('admin.user.tambah.store');
+    Route::get('/admin/user/{id}/edit', 'edit')->name('admin.user.ubah.edit');
+    Route::put('/admin/user/{id}', 'update')->name('admin.user.ubah.update');
+    // Route::get('/admin/user/{id}', 'show')->name('admin.user.show');
+    Route::delete('/admin/user/{id}', 'destroy')->name('admin.user.destroy');
     // Route::get('/user/pdf', );
 })->middleware('role:admin');
 
