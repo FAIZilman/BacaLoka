@@ -33,23 +33,31 @@
                 <p class="text-sm text-gray-500 mt-2">Masuk dengan email dan kata sandi perpustakaanmu</p>
             </div>
 
-            <form action="#" class="space-y-5">
+            <form action="{{ route('login.store') }}" method="POST" class="space-y-5">
+                @csrf
+                @method('POST')
                 <div>
                     <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Email</label>
-                    <input type="email"
+                    <input name="email" type="email"
                         class="w-full px-0 py-2 border-b-2 border-gray-200 focus:border-purple-600 outline-none transition-colors text-gray-800 placeholder-gray-300"
                         placeholder="Contoh: user@email.com">
+                    @error ('email')
+                    <p class="text-red-500 font-semibold text-xs">
+                        {{ $message }}
+                    </p>
+                    @enderror
                 </div>
 
                 <div>
                     <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Kata
                         Sandi</label>
                     <div class="relative">
-                        <input type="password"
+                        <input name="password" type="password"
                             class="w-full px-0 py-2 border-b-2 border-gray-200 focus:border-purple-600 outline-none transition-colors text-gray-800 placeholder-gray-300"
                             placeholder="Masukkan kata sandi">
-                        <button type="button"
-                            class="absolute right-0 top-2 text-xs font-bold text-purple-600 hover:text-purple-800">LIHAT</button>
+                        <div type="button"
+                            class="absolute right-0 top-2 text-xs font-bold text-purple-600 hover:text-purple-800">LIHAT
+                        </div>
                     </div>
                 </div>
 
@@ -59,7 +67,7 @@
                 </div>
 
                 <button type="submit"
-                    class="w-full bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 rounded-full transition-all duration-300 shadow-lg shadow-purple-100 mt-4">
+                    class="w-full bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 rounded-full transition-all duration-300 shadow-lg shadow-purple-100 mt-4 cursor-pointer">
                     MASUK
                 </button>
             </form>

@@ -40,7 +40,7 @@ class RegisterController extends Controller
             $user = DB::table('users')->insertGetId([
                 'name' => $request->string('name')->trim()->ucwords(),
                 'email' => $request->input('email'),
-                'password' => Hash::make($request->input('email')),
+                'password' => Hash::make($request->input('password')),
                 'role' => 'user',
                 'created_at' => now()
             ]);

@@ -167,7 +167,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href=""
+                                <a href="{{ route('logout') }}"
                                     class="inline-flex items-center w-full p-2 text-fg-danger hover:bg-neutral-tertiary-medium rounded">
                                     <svg class="w-4 h-4 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                         width="24" height="24" fill="none" viewBox="0 0 24 24">
