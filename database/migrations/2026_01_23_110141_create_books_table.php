@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->string('title');
             $table->string('slug')->nullable(false);
             $table->text('desc')->nullable(true);
+            $table->integer('show')->default(0);
             $table->string('author');
             $table->string('penerbit');
             $table->year('year_terbit');

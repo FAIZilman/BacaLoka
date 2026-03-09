@@ -60,7 +60,9 @@
                 @if (Auth::check())
                 <div class="pl-2 group relative cursor-pointer">
                     @if (Auth::user()->role == 'admin')
-                    <a href="{{ route('admin.dashboard') }}">Dashboard Admin</a>
+                    <a href="{{ route('admin.dashboard') }}"
+                        class="inline-block px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-medium shadow-sm shadow-purple-200 cursor-pointer">Dashboard
+                        Admin</a>
                     @else
                     {{ Auth::user()->name }}
                     <div id="dropdownInformation"
@@ -229,8 +231,12 @@
                     </div>
 
                     <div class="pt-4 border-t border-gray-100">
-                        <img src="https://via.placeholder.com/200x300?text=Iklan+Event+Ungu"
-                            class="rounded-lg shadow-inner opacity-80" alt="Promo">
+                        {{-- <img src="https://via.placeholder.com/200x300?text=Iklan+Event+Ungu" --}} {{--
+                            class="rounded-lg shadow-inner opacity-80" alt="Promo"> --}}
+                        <button type="submit"
+                            class="w-full py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-medium shadow-sm shadow-purple-200 cursor-pointer">
+                            Terapkan
+                        </button>
                     </div>
                 </div>
             </aside>
@@ -258,20 +264,21 @@
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                    @foreach ($books_populer as $book)
 
                     <div
                         class="bg-white rounded-lg p-3 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col">
                         <div class="relative aspect-[3/4.5] overflow-hidden rounded mb-3">
-                            <img src="https://covers.openlibrary.org/b/id/8226191-L.jpg"
+                            <img src="{{ 'storage/'.$book->image }}"
                                 class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             <div
                                 class="absolute top-2 left-2 bg-gramed-purple text-white text-[9px] font-black px-2 py-0.5 rounded">
                                 TERSEDIA</div>
                         </div>
-                        <p class="text-[10px] text-gray-400 font-bold uppercase mb-1">James Clear</p>
+                        <p class="text-[10px] text-gray-400 font-bold uppercase mb-1">{{ $book->author }}</p>
                         <h3
                             class="font-bold text-sm text-gray-800 line-clamp-2 leading-snug flex-1 hover:text-gramed-purple cursor-pointer">
-                            Atomic Habits: Perubahan Kecil Yang Memberikan Hasil Luar Biasa</h3>
+                            {{ $book->title }}</h3>
                         <div class="mt-3 flex items-center justify-between">
                             <p class="text-gramed-purple font-black text-base italic">Gratis</p>
                             <div class="text-yellow-400 text-[10px]">
@@ -282,66 +289,7 @@
                             class="w-full mt-4 border border-gramed-purple text-gramed-purple py-2 rounded text-xs font-black hover:bg-gramed-purple hover:text-white transition">PINJAM
                             BUKU</button>
                     </div>
-
-                    <div
-                        class="bg-white rounded-lg p-3 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col">
-                        <div class="relative aspect-[3/4.5] overflow-hidden rounded mb-3">
-                            <img src="https://covers.openlibrary.org/b/id/12547191-L.jpg"
-                                class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <div
-                                class="absolute top-2 left-2 bg-gramed-accent text-white text-[9px] font-black px-2 py-0.5 rounded uppercase italic tracking-widest">
-                                E-Book Digital</div>
-                        </div>
-                        <p class="text-[10px] text-gray-400 font-bold uppercase mb-1">Henry Manampiring</p>
-                        <h3
-                            class="font-bold text-sm text-gray-800 line-clamp-2 leading-snug flex-1 hover:text-gramed-purple cursor-pointer">
-                            Filosofi Teras: Stoisisme Untuk Hidup Masa Kini</h3>
-                        <div class="mt-3">
-                            <p class="text-gramed-purple font-black text-base italic leading-none">Anggota Silver</p>
-                        </div>
-                        <button
-                            class="w-full mt-4 bg-gramed-purple text-white py-2 rounded text-xs font-black hover:bg-gramed-accent transition">BACA
-                            DIGITAL</button>
-                    </div>
-
-                    <div
-                        class="bg-white rounded-lg p-3 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col">
-                        <div class="relative aspect-[3/4.5] overflow-hidden rounded mb-3">
-                            <img src="https://covers.openlibrary.org/b/id/12915858-L.jpg"
-                                class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        </div>
-                        <p class="text-[10px] text-gray-400 font-bold uppercase mb-1">Tere Liye</p>
-                        <h3
-                            class="font-bold text-sm text-gray-800 line-clamp-2 leading-snug flex-1 hover:text-gramed-purple cursor-pointer">
-                            Bumi (Edisi Kolektor Ungu)</h3>
-                        <div class="mt-3 flex items-center justify-between">
-                            <p class="text-gramed-purple font-black text-base italic font-light italic">Pinjam Fisik</p>
-                        </div>
-                        <button
-                            class="w-full mt-4 border border-gramed-purple text-gramed-purple py-2 rounded text-xs font-black hover:bg-gramed-purple hover:text-white transition uppercase">Cek
-                            Ketersediaan</button>
-                    </div>
-
-                    <div
-                        class="bg-white rounded-lg p-3 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col opacity-75">
-                        <div class="relative aspect-[3/4.5] overflow-hidden rounded mb-3">
-                            <img src="https://covers.openlibrary.org/b/id/10521270-L.jpg"
-                                class="w-full h-full object-cover grayscale">
-                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-                                <span
-                                    class="text-white font-black text-xs uppercase tracking-widest bg-black/60 px-3 py-1">Kosong</span>
-                            </div>
-                        </div>
-                        <p class="text-[10px] text-gray-400 font-bold uppercase mb-1">Neil deGrasse Tyson</p>
-                        <h3 class="font-bold text-sm text-gray-800 line-clamp-2 leading-snug flex-1">Astrophysics for
-                            People in a Hurry</h3>
-                        <div class="mt-3">
-                            <p class="text-gray-400 font-black text-base italic italic">Tersedia di Juli</p>
-                        </div>
-                        <button disabled
-                            class="w-full mt-4 bg-gray-200 text-gray-400 py-2 rounded text-xs font-black cursor-not-allowed uppercase italic">Tunggu
-                            Antrean</button>
-                    </div>
+                    @endforeach
 
                 </div>
             </main>
