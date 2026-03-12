@@ -237,6 +237,10 @@
                             class="w-full py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-medium shadow-sm shadow-purple-200 cursor-pointer">
                             Terapkan
                         </button>
+                        <button type="submit"
+                            class="w-full py-2 mt-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-medium shadow-sm shadow-purple-200 cursor-pointer">
+                            Lihat Buku Peminjaman
+                        </button>
                     </div>
                 </div>
             </aside>
@@ -260,7 +264,8 @@
                     <h2
                         class="text-xl font-black text-gray-800 border-b-4 border-gramed-purple pb-1 uppercase tracking-tighter italic">
                         Buku Paling Populer</h2>
-                    <a href="#" class="text-sm font-bold text-gramed-purple hover:underline italic">Lihat Semua</a>
+                    <a href="" class="text-sm font-bold text-gramed-purple hover:underline italic text-center">Lihat
+                        Semua</a>
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
@@ -285,9 +290,9 @@
                                 <i class="fas fa-star"></i> 5.0
                             </div>
                         </div>
-                        <button
-                            class="w-full mt-4 border border-gramed-purple text-gramed-purple py-2 rounded text-xs font-black hover:bg-gramed-purple hover:text-white transition">PINJAM
-                            BUKU</button>
+                        <a href="{{ route('user.detail.buku', ['slug' => $book->slug]) }}"
+                            class="w-full mt-4 border border-gramed-purple text-gramed-purple py-2 rounded text-xs font-black hover:bg-gramed-purple hover:text-white transition text-center">Lihat
+                            Buku</a>
                     </div>
                     @endforeach
 

@@ -17,7 +17,7 @@ return new class extends Migration {
                 'id'
             );
             $table->dateTime('tanggal_pinjam');
-            $table->dateTime('tanggal_kembali');
+            $table->dateTime('tanggal_kembali')->nullable(true);
             $table->enum('status', ['dipinjam', 'dikembalikan']);
             $table->timestamps();
         });

@@ -14,6 +14,7 @@
             font-family: 'Inter', sans-serif;
         }
     </style>
+    @notifyCss
     <title>Masuk | Pustaka Digital</title>
 </head>
 
@@ -97,6 +98,8 @@
     <footer class="p-6 text-center text-gray-400 text-xs">
         &copy; 2024 Pustaka Digital Indonesia. Semua Hak Dilindungi.
     </footer>
+    <x-notify::notify />
+    @notifyJs
 
 </body>
 
