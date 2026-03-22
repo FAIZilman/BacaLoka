@@ -237,10 +237,10 @@
                             class="w-full py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-medium shadow-sm shadow-purple-200 cursor-pointer">
                             Terapkan
                         </button>
-                        <button type="submit"
+                        <a href=""
                             class="w-full py-2 mt-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-medium shadow-sm shadow-purple-200 cursor-pointer">
                             Lihat Buku Peminjaman
-                        </button>
+                        </a>
                     </div>
                 </div>
             </aside>
