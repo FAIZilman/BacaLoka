@@ -3,16 +3,22 @@
       "framework": null,
     "functions": {
         "api/index.php": { "runtime": "vercel-php@0.7.4" }
+        
     },
-    "routes": [{
+    "routes": [
+       {
+            "src": "/(css|js)/(.*)",
+            "dest": "public/$1/$2"
+        },
+        {
         "src": "/(.*)",
         "dest": "/api/index.php"
-    }],
+    }
+],
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
         "APP_URL": "https://baca-loka.vercel.app",
-
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
